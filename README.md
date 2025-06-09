@@ -28,7 +28,7 @@ You can now edit <filename> with your favorite editor. Each time you save the fi
 
 ## Run with screen
 
-The tools directory contains two scripts that uses screen to start all session in the background. The script in it's current state has the location of the Python virtual environment hard coded as ~/.virtualenvs/build123d
+The tools directory contains two scripts that uses screen to start all session in the background. The script in it's current state has the location of the Python virtual environment hard coded as ~/.virtualenvs/ocp-cad-wrapper
 
 Copy these two scripts into your execution path (like /usr/local/bin for example)
 
