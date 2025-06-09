@@ -29,15 +29,12 @@ def watch_file(file_path):
     try:
         while True:
             global is_modified
-            global do_show
             global b123d
             if is_modified:
                 is_modified = False
                 try:
                     b123d = reload(b123d)
                 except Exception as e: print(e)
-                if do_show:
-                    show_all()
             time.sleep(1)
     except KeyboardInterrupt:
         observer.stop()
@@ -46,18 +43,12 @@ def watch_file(file_path):
 
 @click.command()
 @click.argument('filename')
-@click.option('--show/--no-show', required=False)
-def run(filename, show=None):
+def run(filename):
     global is_modified
-    global do_show
     global b123d
     is_modified = False
-    do_show = False
     dir_name = os.path.dirname(os.path.expanduser(filename))
-    sys.path.append(dir_name)
+    sys.path.insert(0, dir_name)
     file_name = os.path.splitext(os.path.basename(filename))[0]
     b123d = __import__(file_name)
-    if show:
-        do_show = True
-        show_all()
     watch_file(filename)
